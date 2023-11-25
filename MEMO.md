@@ -12,3 +12,11 @@
   - https://docs.astro.build/ja/guides/integrations-guide/tailwind/
 - markdoc
   - https://docs.astro.build/ja/guides/integrations-guide/markdoc/
+
+## 印刷モードでブラウザを開く
+
+### Playwright
+
+```
+npm install playwright-core
+```
