@@ -7,7 +7,11 @@ import markdoc from "@astrojs/markdoc";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind(), markdoc()],
+  integrations: [react(), tailwind({
+    // Example: Provide a custom path to a Tailwind config file
+    configFile: './tailwind.config.ts',
+    applyBaseStyles: false,
+  }), markdoc()],
   output: "server",
   adapter: node({
     mode: "standalone"
