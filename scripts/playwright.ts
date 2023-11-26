@@ -11,6 +11,12 @@ const screen = () => {
 		const page = await browser.newPage();
 		await page.emulateMedia({ media: "screen" });
 		await page.goto('http://localhost:4321/');
+		console.log("Ctrl+C to exit");
+		// Ctrl+Cで終了させる場合のクリーンアップ処理
+    process.on('SIGINT', async () => {
+      await browser.close();
+      process.exit();
+    });
 	});
 };
 
@@ -20,6 +26,12 @@ const print = () => {
 		const page = await browser.newPage();
 		await page.emulateMedia({ media: "print" });
 		await page.goto('http://localhost:4321/');
+		console.log("Ctrl+C to exit");
+		// Ctrl+Cで終了させる場合のクリーンアップ処理
+    process.on('SIGINT', async () => {
+      await browser.close();
+      process.exit();
+    });
 	});
 };
 
