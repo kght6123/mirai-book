@@ -49,7 +49,7 @@ const downloadPDF = () => {
 // 起動パラメータで処理を分岐する
 const args = process.argv.slice(2);
 if (args.length === 0) {
-	console.log("引数がありません");
+	console.log("No arguments provided.");
 	process.exit(1);
 }
 const command = args[0];
@@ -64,7 +64,7 @@ switch (command) {
 		downloadPDF();
 		break;
 	default:
-		console.log("引数が不正です");
+		console.log("Invalid argument.");
 		process.exit(1);
 }
 
