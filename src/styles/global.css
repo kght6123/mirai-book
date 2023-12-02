@@ -1,4 +1,29 @@
-/* @tailwind base; */
+@media print {
+	@page {
+		size: 182mm 257mm;
+	}
+}
+
+@page {
+	margin-top: 25mm;
+	margin-bottom: 33mm;
+	@bottom-left {
+		content: counter(page);
+	}
+}
+	
+.page {
+	counter-increment: page;
+}
+
+.page::after {
+	content: counter(page);
+}
+
+.page .toc a::after {
+	content: leader(".") target-counter(attr(href),page);
+}
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
