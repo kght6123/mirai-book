@@ -10,21 +10,30 @@ const { Content } = await entry.render();
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles/global.css" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
   <body>
-    <div>
+    <div class="page">
       <h1>Table of Contents</h1>
       <ol class="toc">
-        <li><a href="#chapter1" class="print:text-red-600 after:contents after:[--tw-content:leader('.')_target-counter(attr(href),page)]">Loomings</a></li>
+        <li><a href="#chapter1" class="print:text-red-600">Loomings</a></li>
         <li><a href="#chapter2">The Carpet-Bag</a></li>
         <li><a href="#chapter3">The Spouter-Inn</a></li>
       </ol>
     </div>
-    <div class="[break-before:page]">
-      <h1 class="text-red-500 font-black text-9xl" id="chapter1">{entry.data.title}</h1>
+    <div class="page [break-before:page]">
+      <h1 class="text-red-500 font-black text-9xl" id="chapter1">{entry.data.title}1</h1>
+      <Content />
+    </div>
+    <div class="page [break-before:page]">
+      <h1 class="text-blue-500 font-black text-9xl" id="chapter2">{entry.data.title}2</h1>
+      <Content />
+    </div>
+    <div class="page [break-before:page]">
+      <h1 class="text-green-500 font-black text-9xl" id="chapter3">{entry.data.title}3</h1>
       <Content />
     </div>
   </body>

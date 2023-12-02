@@ -12,7 +12,7 @@ export default defineConfig({
     configFile: './tailwind.config.ts',
     applyBaseStyles: false,
   }), markdoc()],
-  output: "server",
+  output: "static",
   adapter: node({
     mode: "standalone"
   })

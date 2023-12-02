@@ -1,20 +1,4 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
-@page {
-	size: 182mm 257mm;
-  margin-top: 25mm;
-  margin-bottom: 33mm;
-	@bottom-left {
-		content: counter(page);
-		counter-increment: page;
-	}
-}
-
-.page {
-	counter-increment: page;
-}
-.page .toc::after {
-	content: counter(page);
-}
