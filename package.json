@@ -6,13 +6,14 @@
     "dev": "astro dev",
     "dev:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css --watch",
     "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
     "astro": "astro",
-    "preview:vs": "npx @vivliostyle/cli preview",
-    "build:vs": "npx @vivliostyle/cli build",
+    "preview": "astro preview",
+    "preview:vs": "npx @vivliostyle/cli preview --style ./public/styles/global.css",
+    "preview:all": "npx concurrently \"npm run build && npm run preview:vs\" \"npm run dev:tc\"",
+    "build": "astro check && astro build",
+    "build:vs": "npx @vivliostyle/cli build --style ./public/styles/global.css",
     "build:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css",
-    "build:vs:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./.vivliostyle/dist/styles/global.css"
+    "build:all": "npm run build && npm run build:tc && npm run build:vs"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",

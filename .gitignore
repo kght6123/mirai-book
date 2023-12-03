@@ -23,3 +23,6 @@ pnpm-debug.log*
 # vivliostyle
 .vivliostyle/
 *.pdf
+
+# tailwind css
+public/styles/global.css
