@@ -3,17 +3,19 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "dev:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css --watch",
-    "start": "astro dev",
     "astro": "astro",
-    "preview": "astro preview",
-    "preview:vs": "npx @vivliostyle/cli preview --style ./public/styles/global.css",
-    "preview:all": "npx concurrently \"npm run build && npm run preview:vs\" \"npm run dev:tc\"",
-    "build": "astro check && astro build",
-    "build:vs": "npx @vivliostyle/cli build --style ./public/styles/global.css",
+    "build:astro:check": "astro check && astro build",
+    "build:astro:watch": "npx chokidar-cli \"src/**/*.astro\" \"src/**/*.mdoc\" -c \"npm run build:astro\"",
+    "build:astro": "astro build",
     "build:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css",
-    "build:all": "npm run build && npm run build:tc && npm run build:vs"
+    "build:vs": "npx @vivliostyle/cli build --style ./public/styles/global.css",
+    "build": "npm run build:astro && npm run build:tc && npm run build:vs",
+    "dev:astro": "astro dev",
+    "dev:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css --watch",
+    "dev:vs": "npx @vivliostyle/cli preview --style ./public/styles/global.css",
+    "dev": "npx concurrently \"npm run build:astro && npm run dev:vs\" \"npm run dev:tc\" \"npm run build:astro:watch\"",
+    "preview": "astro preview",
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
