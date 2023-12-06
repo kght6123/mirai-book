@@ -11,18 +11,6 @@
 		content: counter(page);
 	}
 }
-	
-.page {
-	counter-increment: page;
-}
-
-.page::after {
-	content: counter(page);
-}
-
-.page .toc a::after {
-	content: leader(".") target-counter(attr(href),page);
-}
 
 @tailwind base;
 @tailwind components;
