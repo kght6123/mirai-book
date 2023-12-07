@@ -9,8 +9,8 @@ const screen = () => {
 	// Webページ版を表示する
 	playwright.chromium.launch({channel: 'chrome', headless: false}).then(async browser => {
 		const page = await browser.newPage();
-		await page.emulateMedia({ media: "screen" });
 		await page.goto('http://localhost:4321/');
+		await page.emulateMedia({ media: "screen" });
 		console.log("Ctrl+C to exit");
 		// Ctrl+Cで終了させる場合のクリーンアップ処理
     process.on('SIGINT', async () => {
@@ -24,8 +24,8 @@ const print = () => {
 	// 印刷のプレビュー（media: print）を表示する
 	playwright.chromium.launch({channel: 'chrome', headless: false}).then(async browser => {
 		const page = await browser.newPage();
-		await page.emulateMedia({ media: "print" });
 		await page.goto('http://localhost:4321/');
+		await page.emulateMedia({ media: "print" });
 		console.log("Ctrl+C to exit");
 		// Ctrl+Cで終了させる場合のクリーンアップ処理
     process.on('SIGINT', async () => {
@@ -39,8 +39,8 @@ const downloadPDF = () => {
 	// PDFでダウンロードする
 	playwright.chromium.launch({channel: 'chrome', headless: false}).then(async browser => {
 		const page = await browser.newPage();
-		await page.emulateMedia({ media: "print" });
 		await page.goto('http://localhost:4321/');
+		await page.emulateMedia({ media: "print" });
 		await page.pdf({ path: "./print.pdf", width: "182mm", height: "257mm", printBackground: true, margin: { top: "10mm", right: "10mm", bottom: "10mm", left: "10mm" } });
 		await browser.close();
 	});

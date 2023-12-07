@@ -3,28 +3,35 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "astro": "astro",
+    "build:astro:check": "astro check && astro build",
+    "build:astro:watch": "npx chokidar-cli \"src/**/*.astro\" \"src/**/*.mdoc\" -c \"npm run build:astro\"",
+    "build:astro": "astro build",
+    "build:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css --no-autoprefixer",
+    "build:vs": "npx @vivliostyle/cli build --style ./public/styles/global.css",
+    "build": "npm run build:astro && npm run build:tc && npm run build:vs",
+    "dev:astro": "astro dev",
+    "dev:tc": "npx tailwindcss@latest -i ./src/styles/global.css -o ./public/styles/global.css --watch --no-autoprefixer",
+    "dev:vs": "npx @vivliostyle/cli preview --style ./public/styles/global.css",
+    "dev": "npx concurrently \"npm run build:astro && npm run dev:vs\" \"npm run dev:tc\" \"npm run build:astro:watch\"",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
     "@astrojs/markdoc": "^0.7.2",
     "@astrojs/node": "^6.0.4",
     "@astrojs/react": "^3.0.6",
-    "@astrojs/tailwind": "^5.0.2",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "astro": "^3.6.0",
     "playwright-core": "^1.40.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.5",
     "typescript": "^5.3.2"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0"
+    "@types/node": "^20.10.0",
+    "tailwindcss": "^3.3.6"
   }
 }

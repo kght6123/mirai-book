@@ -1,21 +1,49 @@
 ---
-import '../styles/global.css';
 import { getEntryBySlug } from 'astro:content';
 
 const entry = await getEntryBySlug('docs', 'hello');
 const { Content } = await entry.render();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-red-500 font-black text-9xl">{entry.data.title}</h1>
-		<Content />
-	</body>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="./styles/global.css" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="ci-page">
+      <h1>Table of Contents</h1>
+      <ol class="after_counter-page">
+        <li><a href="#chapter1" class="print_text-red-600 after_target-counter-page">hello1</a></li>
+        <li><a href="#chapter2" class="after_target-counter-page">hello2</a></li>
+        <li><a href="#chapter3" class="after_target-counter-page">hello3</a></li>
+        <li><a href="#chapter4" class="after_target-counter-page">hello4</a></li>
+      </ol>
+      <div class="break-bf-page"></div>
+    </div>
+    <div class="ci-page">
+      <h1 class="text-red-500 font-black text-9xl" id="chapter1">{entry.data.title}1</h1>
+      <Content />
+      <div class="break-bf-page"></div>
+    </div>
+    <div class="ci-page">
+      <h1 class="text-blue-500 font-black text-9xl" id="chapter2">{entry.data.title}2</h1>
+      <Content />
+      <div class="break-bf-page"></div>
+    </div>
+    <div class="ci-page">
+      <h1 class="text-green-500 font-black text-9xl" id="chapter3">{entry.data.title}3</h1>
+      <Content />
+      <div class="break-bf-page"></div>
+    </div>
+    <div class="ci-page">
+      <h1 class="text-yellow-500 font-black text-9xl" id="chapter4">{entry.data.title}4</h1>
+      <Content />
+      <div class="break-bf-page"></div>
+    </div>
+  </body>
 </html>
