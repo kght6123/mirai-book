@@ -7,7 +7,7 @@ export default defineMarkdocConfig({
       // Choose from Shiki's built-in themes (or add your own)
       // Default: 'github-dark'
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      theme: 'github-light',
+      theme: 'min-light',
       // Enable word wrap to prevent horizontal scrolling
       // Default: false
       wrap: true,
