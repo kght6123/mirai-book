@@ -1,10 +1,10 @@
-@media print {
-	@page {
-		size: 182mm 257mm;
-	}
-}
-
 @page {
+	size: jis-b5;
+  /* margin: 10% !important; */
+  /* トンボを追加 */
+  /* marks: crop cross; */
+  /* トンボの塗り足しを3mmに設定 */
+  /* bleed: 3mm; */
 	margin-top: 25mm;
 	margin-bottom: 33mm;
 	@bottom-left {
@@ -12,6 +12,22 @@
 	}
 }
 
+@page :left {
+  /* 左ページの右余白を広げる */
+  /* 上 | 右 | 下 | 左 */
+  margin: 10% 8% 10% 12%;
+}
+
+@page :right {
+  /* 右ページの左余白を広げる */
+  /* 上 | 右 | 下 | 左 */
+  margin: 10% 12% 10% 8%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+	@apply font-["Rounded_Mgen+_2p","Rounded_Mplus_1c","PlemolJP"] [line-height:1.75] text-[10px];
+}
