@@ -31,3 +31,7 @@
 :root {
 	@apply font-["Rounded_Mgen+_2p","Rounded_Mplus_1c","PlemolJP"] [line-height:1.75] text-[10px];
 }
+
+.astro-code {
+	@apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
+}
