@@ -1,15 +1,22 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* @import "./prism-one-light.css"; */
+
+/* MEMO: Topに@importで書く必要がある https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
+
 @page {
-	size: jis-b5;
+  size: jis-b5;
   /* margin: 10% !important; */
   /* トンボを追加 */
   /* marks: crop cross; */
   /* トンボの塗り足しを3mmに設定 */
   /* bleed: 3mm; */
-	margin-top: 25mm;
-	margin-bottom: 33mm;
-	@bottom-left {
-		content: counter(page);
-	}
+  margin-top: 25mm;
+  margin-bottom: 33mm;
+  @bottom-left {
+    content: counter(page);
+  }
 }
 
 @page :left {
@@ -24,14 +31,21 @@
   margin: 10% 12% 10% 8%;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-	@apply font-["Rounded_Mgen+_2p","Rounded_Mplus_1c","PlemolJP"] [line-height:1.75] text-[10px];
+  @apply font-["Rounded_Mgen+_2p","Rounded_Mplus_1c","PlemolJP"] [line-height:1.75] text-[10px];
 }
 
+/* shiki */
 .astro-code {
-	@apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
+  @apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
 }
+
+/* prism */
+/* pre[class*="language-"] {
+  @apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  white-space: pre-wrap !important;
+} */

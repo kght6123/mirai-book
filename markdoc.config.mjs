@@ -1,7 +1,24 @@
-import { defineMarkdocConfig } from '@astrojs/markdoc/config';
+import { defineMarkdocConfig, nodes, component } from '@astrojs/markdoc/config';
 import shiki from '@astrojs/markdoc/shiki';
+// import prism from '@astrojs/markdoc/prism';
 
+
+/** @type {import('@markdoc/markdoc').Config} */
 export default defineMarkdocConfig({
+  // nodes: {
+  //   fence: {
+  //     ...nodes.fence,
+  //     render: component('./src/components/ClientFence.astro'),
+  //     attributes: {
+  //       language: {
+  //         type: String
+  //       },
+  //       content: {
+  //         type: String
+  //       },
+  //     }
+  //   }
+  // },
   extends: [
     shiki({
       // Choose from Shiki's built-in themes (or add your own)
@@ -16,5 +33,6 @@ export default defineMarkdocConfig({
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
     }),
+    // prism(),
   ],
 });
