@@ -1,4 +1,5 @@
 import plugin from 'tailwindcss/plugin';
+const flattenColorPalette = require('tailwindcss/src/util/flattenColorPalette')
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -63,6 +64,17 @@ export default {
           5: '5',
         },
       })
+      matchUtilities(
+        {
+          hl: (value) => ({
+            "background-color": value,
+            "padding-right": '1rem',
+            "width": '515px',
+            "display": 'inline-block',
+          }),
+        },
+        { values: flattenColorPalette(theme('colors', {})), type: 'color' }
+      )
     }),
   ],
 }
