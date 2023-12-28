@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-/* @import "./prism-one-light.css"; */
 
 /* MEMO: Topに@importで書く必要がある https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 
@@ -39,13 +38,12 @@
 .astro-code {
   @apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
 }
-
-/* prism */
-/* pre[class*="language-"] {
-  @apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
+.highlight-2 > .astro-code > code > .line:nth-child(2) {
+  @apply bg-yellow-200 pr-4 w-[515px] inline-block;
 }
-
-code[class*='language-'],
-pre[class*='language-'] {
-  white-space: pre-wrap !important;
-} */
+.highlight-3 > .astro-code > code > .line:nth-child(3) {
+  @apply bg-yellow-200 pr-4 w-[515px] inline-block;
+}
+.highlight-5 > .astro-code > code > .line:nth-child(5) {
+  @apply bg-yellow-200 pr-4 w-[515px] inline-block;
+}

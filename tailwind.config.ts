@@ -6,7 +6,7 @@ export default {
     preflight: false,
   },
   separator: '_',
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,mdoc,svelte,ts,tsx,vue}'],
   theme: {
     counterIncrement: {
       none: 'none',
@@ -31,7 +31,7 @@ export default {
     extend: {},
   },
   plugins: [
-    plugin(function({ matchUtilities, theme }) {
+    plugin(function({ matchUtilities, matchVariant, theme }) {
       matchUtilities(
         {
           ci: (value) => ({
@@ -54,6 +54,15 @@ export default {
         },
         { values: theme('breakBefore') }
       )
+      matchVariant("acl", (value) => `& > .astro-code > code > .line:nth-child(${value})`, {
+        values: {
+          1: '1',
+          2: '2',
+          3: '3',
+          4: '4',
+          5: '5',
+        },
+      })
     }),
   ],
 }
