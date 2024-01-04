@@ -1,0 +1,13 @@
+---
+import shiki from 'shiki';
+type Props = {
+  content: string;
+};
+const { content } = Astro.props;
+// const { code, lang = 'plaintext', theme = 'nord' } = Astro.props;
+const highlighter = await shiki.getHighlighter({theme: 'min-light'});
+const html = highlighter.codeToHtml(content, "css");
+---
+<div class="acl-1_hl-red-200 acl-3_hl-yellow-200" set:html={html}>
+<!-- <pre class="astro-code min-light"><code>{content}</code></pre> -->
+</div>

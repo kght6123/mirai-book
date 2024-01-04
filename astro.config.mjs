@@ -6,7 +6,9 @@ import markdoc from "@astrojs/markdoc";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), markdoc({allowHTML: true})],
+  integrations: [react(), markdoc({
+    allowHTML: true,
+  })],
   output: "static",
   adapter: node({
     mode: "standalone"
