@@ -64,6 +64,15 @@ export default {
           5: '5',
         },
       })
+      matchVariant("scl", (value) => `& > .shiki > code > .line:nth-child(${value})`, {
+        values: {
+          1: '1',
+          2: '2',
+          3: '3',
+          4: '4',
+          5: '5',
+        },
+      })
       matchUtilities(
         {
           hl: (value) => ({

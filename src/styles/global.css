@@ -35,6 +35,6 @@
 }
 
 /* shiki */
-.astro-code {
+.astro-code, .shiki {
   @apply font-["Rounded_Mgen+_1mn","PlemolJP_Console"] rounded px-4 pt-2 pb-3 border border-gray-300 border-solid;
 }

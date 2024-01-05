@@ -5,20 +5,6 @@ import shiki from '@astrojs/markdoc/shiki';
 
 /** @type {import('@markdoc/markdoc').Config} */
 export default defineMarkdocConfig({
-  // nodes: {
-  //   fence: {
-  //     ...nodes.fence,
-  //     render: component('./src/components/ClientFence.astro'),
-  //     attributes: {
-  //       language: {
-  //         type: String
-  //       },
-  //       content: {
-  //         type: String
-  //       },
-  //     }
-  //   }
-  // },
   nodes: {
     link: {
       render: component('./src/components/markdoc/Link.astro'),
@@ -31,7 +17,7 @@ export default defineMarkdocConfig({
       attributes: {
         content: { type: String },
         language: { type: String },
-        process: { type: Boolean },
+        process: { type: Boolean, default: true },
       },
     },
   },
