@@ -1,25 +1,24 @@
 ---
 import shiki from 'shiki';
-import { c } from '../../../dist/chunks/astro_f94ea8f0.mjs';
 type Props = {
   content: string;
   language: string;
 };
 type languageOptions = {
   title: string;
-  highlight: (number | string | { line: number | string; color: string })[];
+  highlight: (number | string | { line: number; color: string })[];
 };
 const { content, language } = Astro.props;
 const highlighter = await shiki.getHighlighter({theme: 'min-light'});
 // html:{title="こんにちは",highlight=[1,"3-4",{line:6,color:"red"}]}から言語を取得する
 const lang = language.split(':', 1)[0];
 const json = language.split(':').slice(1).join(':');
-console.log(lang, json);
+// console.log(lang, json);
 if (!json) return;
 // TODO: zodを使ってバリデーションをしたい
 const options: languageOptions = JSON.parse(json);
 // languageOptionsのhighlightを使って、ハイライト対象の行番号のリストを取得する
-const lineNumbers = options?.highlight?.map((h) => {
+const lineNumbers = options?.highlight?.flatMap((h) => {
   if (typeof h === 'number') {
     return h;
   } else if (typeof h === 'string') {
@@ -29,13 +28,23 @@ const lineNumbers = options?.highlight?.map((h) => {
     return h.line;
   }
 });
-console.log(lineNumbers);
+// console.log(lineNumbers);
+// languageOptionsのhighlightを使って、赤色の行番号のリストを取得する
+const redLineNumbers = options?.highlight?.flatMap((h) => 
+  typeof h !== 'number' && typeof h !== 'string' && h.color === 'red' ? h.line : []
+);
 // highlighter.codeToHtmlの第二引数にオプションを渡すことができる
 const html = highlighter.codeToHtml(content, {
   lang,
   // lineOptions: [{line: 4, classことがでes: ['bg-blue-200']}] このオプションでも行に対してスタイルを当てるきるが、文字があるところだけなので、行全体に対してスタイルを当てたいので、下記のようにする
 });
-// lineNumbersがある場合は、行番号を追加する
+// lineNumbersがある場合は、行番号のclassを追加する
+const codeLineClassList = lineNumbers.map(
+  (lineNumber) => redLineNumbers.some(
+      (redLineNumber) => lineNumber === redLineNumber
+    ) ? `scl-${lineNumber}_hl-red-200` : `scl-${lineNumber}_hl-yellow-200`);
+// console.log(codeLineClassList);
 ---
-<div class="scl-1_hl-red-200 scl-3_hl-yellow-200" set:html={html}>
+<p>{options.title}: {lang}</p>
+<div class:list={[codeLineClassList]} set:html={html}>
 </div>

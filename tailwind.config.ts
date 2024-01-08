@@ -8,6 +8,13 @@ export default {
   },
   separator: '_',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,mdoc,svelte,ts,tsx,vue}'],
+  safelist: [
+    // 行ハイライト用、1-100行まで対応
+    {
+      pattern: /hl-(red|yellow)-200/,
+      variants: [...Array(100)].map((_, i) => `scl-${i+1}`),
+    },
+  ],
   theme: {
     counterIncrement: {
       none: 'none',
@@ -56,22 +63,12 @@ export default {
         { values: theme('breakBefore') }
       )
       matchVariant("acl", (value) => `& > .astro-code > code > .line:nth-child(${value})`, {
-        values: {
-          1: '1',
-          2: '2',
-          3: '3',
-          4: '4',
-          5: '5',
-        },
+        // 100行まで対応
+        values: Object.fromEntries(new Map([...Array(100)].map((_, i) => [i+1,`${i+1}`]))),
       })
       matchVariant("scl", (value) => `& > .shiki > code > .line:nth-child(${value})`, {
-        values: {
-          1: '1',
-          2: '2',
-          3: '3',
-          4: '4',
-          5: '5',
-        },
+        // 100行まで対応
+        values: Object.fromEntries(new Map([...Array(100)].map((_, i) => [i+1,`${i+1}`]))),
       })
       matchUtilities(
         {
