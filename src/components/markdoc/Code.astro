@@ -36,7 +36,7 @@ const redLineNumbers = options?.highlight?.flatMap((h) =>
 // highlighter.codeToHtmlの第二引数にオプションを渡すことができる
 const html = highlighter.codeToHtml(content, {
   lang,
-  // lineOptions: [{line: 4, classことがでes: ['bg-blue-200']}] このオプションでも行に対してスタイルを当てるきるが、文字があるところだけなので、行全体に対してスタイルを当てたいので、下記のようにする
+  // lineOptions: [{line: 4, classes: ['bg-blue-200']}] このオプションでも行に対してスタイルを当てるきるが、文字があるところだけなので、行全体に対してスタイルを当てたいので、下記のようにする
 });
 // lineNumbersがある場合は、行番号のclassを追加する
 const codeLineClassList = lineNumbers.map(
